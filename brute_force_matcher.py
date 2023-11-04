@@ -2,6 +2,7 @@ import numpy as np
 import cv2
 import matplotlib.pyplot as plt
 from common_functions import *
+from brute_force_matcher import *
 import math
 
 image1 = cv2.imread("cuboid.jpeg", cv2.IMREAD_GRAYSCALE)
@@ -42,7 +43,7 @@ matches = brute_force_matcher.match(des1, des2)
 #   - Compare distances of two matches and reject if too close.
 filtered_matches = []
 # Higher the ratio, more matches we allow because some other point has to be extremely close!
-ratio = 1.25
+ratio = 2
 for m in matches:
     closest_distance = math.inf
     for n in matches:

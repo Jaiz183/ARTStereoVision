@@ -23,3 +23,6 @@ def compute_point_cloud(keypoints, depth_map: list[float]) -> list[np.array]:
         for keypoint in keypoints
         for depth in depth_map
     ]
+
+
+plt.imshow()
