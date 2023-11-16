@@ -15,12 +15,19 @@ def compute_depth(
     return [(focal_length * baseline) / disparity for disparity in disparities]
 
 
-def compute_point_cloud(keypoints, depth_map: list[float]) -> list[np.array]:
+def compute_point_cloud(
+    left_keypoints, depth_map: list[float], focal_length: float
+) -> list[np.array]:
     # Implement this!
-    # Get x, y positions of each pixel on disparity map?
+    # Get x, y positions of each pixel on disparity map? - left image key points suffice!
+    # Compute world x, y positions from image plane x, y co-ordinates using similar triangles.
     return [
-        np.array(keypoint[0], keypoint[1], depth)
-        for keypoint in keypoints
+        np.array(
+            (keypoint[0] * depth) / focal_length,
+            (keypoint[1] * depth) / focal_length,
+            depth,
+        )
+        for keypoint in left_keypoints
         for depth in depth_map
     ]
 
