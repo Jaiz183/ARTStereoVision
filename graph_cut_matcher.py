@@ -3,7 +3,7 @@ import numpy as np
 from common_functions import *
 
 
-# Graph cut was removed from opencv :(...or was it?
+# Graph cut was removed from opencv :(...or was it? (yes, yes it was)
 def compute_disparity_map(left_image, right_image) -> tuple:
     # Get dimensions for disparity map with left image.
     height, width, channels = left_image.shape
